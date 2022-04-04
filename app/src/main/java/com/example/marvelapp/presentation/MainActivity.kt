@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.ActivityMainBinding
 
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_container) as NavHostFragment
 
         navController = navHostFragment.navController
+
+        //Instância do BottomNavigationView para que ele escute os eventos do NavController
+        binding.bottomNavMain.setupWithNavController(navController)
+
         appBarConfiguration = AppBarConfiguration(
             setOf()
         )
