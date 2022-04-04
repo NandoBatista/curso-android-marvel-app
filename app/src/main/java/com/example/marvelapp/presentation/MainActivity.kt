@@ -26,8 +26,22 @@ class MainActivity : AppCompatActivity() {
         //Instância do BottomNavigationView para que ele escute os eventos do NavController
         binding.bottomNavMain.setupWithNavController(navController)
 
+        //Configuração da Toolbar
         appBarConfiguration = AppBarConfiguration(
-            setOf()
+            setOf(R.id.charactersFragment, R.id.favoritesFragment, R.id.aboutFragment)
         )
+
+        //Instância da Toolbar para que ele escute os eventos do NavController e possa ser configurado.
+        binding.toolbarApp.setupWithNavController(navController, appBarConfiguration)
+
+        //Configurando o destino de navegação da Toolbar
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            //Se não for o primeiro destino da navegação (Heroes, Favorites, About) ele não vai mostrar o botão de voltar
+            val isTopLevelDestination =
+                appBarConfiguration.topLevelDestinations.contains(destination.id)
+            if (!isTopLevelDestination) {
+                binding.toolbarApp.setNavigationIcon(R.drawable.ic_back)
+            }
+        }
     }
 }
