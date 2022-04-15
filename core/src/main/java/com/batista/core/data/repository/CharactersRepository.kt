@@ -1,4 +1,4 @@
-package com.batista.core.data
+package com.batista.core.data.repository
 
 import androidx.paging.PagingSource
 import com.batista.core.domain.model.Character
