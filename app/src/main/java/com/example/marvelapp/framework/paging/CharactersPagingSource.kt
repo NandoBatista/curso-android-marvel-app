@@ -13,6 +13,7 @@ class CharactersPagingSource(
     //Implementando o PagingSource de Personagens
 ) : PagingSource<Int, Character>() {
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         return try {
             val offset = params.key ?: 0
@@ -37,8 +38,8 @@ class CharactersPagingSource(
                     responseOffset + LIMIT
                 } else null
             )
-        } catch (e: Exception) {
-            LoadResult.Error(e)
+        } catch (exception: Exception) {
+            LoadResult.Error(exception)
         }
     }
     //Serve para salvar o estado e recuperar qual página estava sendo exibida para o usuário

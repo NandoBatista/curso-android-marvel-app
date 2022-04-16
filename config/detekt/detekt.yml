@@ -1,5 +1,5 @@
 build:
-  maxIssues: 1000
+  maxIssues: 1
   excludeCorrectable: false
   weights:
     # complexity: 2
@@ -280,7 +280,7 @@ formatting:
     active: false
     autoCorrect: true
     indentSize: 4
-    maxLineLength: 120
+    maxLineLength: 200
   ChainWrapping:
     active: true
     autoCorrect: true

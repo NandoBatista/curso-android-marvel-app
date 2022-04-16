@@ -10,6 +10,7 @@ import javax.inject.Inject
 
 //Camada de abstração que contribui no isolamento da camada de acesso a dados com a camada de domínio
 class CharactersRepositoryImpl @Inject constructor(
+    //Faz a chamada de um banco de dados ou uma API
     private val remoteDataSource: CharactersRemoteDataSource<DataWrapperResponse>
 ): CharactersRepository {
 

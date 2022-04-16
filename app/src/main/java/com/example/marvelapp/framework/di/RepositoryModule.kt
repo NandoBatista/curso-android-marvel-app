@@ -19,9 +19,8 @@ interface RepositoryModule {
     fun bindCharacterRepository(repository: CharactersRepositoryImpl): CharactersRepository
 
     @Binds
+    //Injetando um DataSource com o Dagger Hilt
     fun bindRemoteDataSource(
-        //Quando depender de um CharactersRemoteDataSource injetar um RetrofitCharactersDataSource
-        //Porque quem depende de um RemoteDataSource vai depender uma interface e não uma implementação
         dataSource: RetrofitCharactersDataSource
     ): CharactersRemoteDataSource<DataWrapperResponse>
 }

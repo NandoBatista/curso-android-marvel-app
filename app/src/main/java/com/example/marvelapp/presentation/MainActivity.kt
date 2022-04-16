@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         //Configurando o destino de navegação da Toolbar
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            //Se não for o primeiro destino da navegação (Heroes, Favorites, About) ele não vai mostrar o botão de voltar
+            //Se não for o primeiro destino da navegação ele não vai mostrar o botão de voltar
             val isTopLevelDestination =
                 appBarConfiguration.topLevelDestinations.contains(destination.id)
             if (!isTopLevelDestination) {
