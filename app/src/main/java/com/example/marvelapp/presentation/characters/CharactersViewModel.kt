@@ -17,7 +17,7 @@ class CharactersViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun charactersPagingData(query: String): Flow<PagingData<Character>> {
-        return getCharactersUseCase(
+        return getCharactersUseCase.invoke(
             GetCharactersUseCase.GetCharactersParams(query, getPageConfig())
         ).cachedIn(viewModelScope)
     }
