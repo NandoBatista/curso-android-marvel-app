@@ -3,7 +3,7 @@ package com.example.marvelapp.framework.network.response
 import com.batista.core.domain.model.Character
 
 data class CharacterResponse(
-    val id: Int,
+    val id: String,
     val name: String,
     val thumbnail: ThumbnailResponse
 )
