@@ -17,6 +17,15 @@ android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\fbatista\\AndroidStudioProjects\\curso-android-marvel-app\\store\\marvel_app_key_store.jks')
+            storePassword 'marvel@123'
+            keyPassword 'marvel@123'
+            keyAlias 'marvel-app'
+        }
+    }
+
     defaultConfig {
         applicationId "com.example.marvelapp"
         minSdkVersion 23
@@ -33,8 +42,24 @@ android {
     }
 
     buildTypes {
+        //Testar aplicação sem ter impacto no tempo de build, pois a ofuscação faz demorar mais o tempo de build
+        debug {
+            applicationIdSuffix '.debug'
+            debuggable true
+        }
+        //Estágio em que os QA testam a aplicação imitando a ofuscação
+        staging {
+            initWith debug
+            minifyEnabled true
+            applicationIdSuffix '.staging'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro',
+                    'proguard-rules-staging.pro'
+        }
+        //Pre-Prod
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
